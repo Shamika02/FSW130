@@ -1,14 +1,13 @@
 import React, {Component} from "react"
-import UserContext from "./userContext"
+import ThemeContext from "./themeContext"
 
 class Header extends Component {
-    static contextType = UserContext
-    
+    static contextType = ThemeContext
     render() {
-        const username = this.context
+        const theme = this.context
         return (
-            <header>
-                <p>Welcome, {username}!</p>
+            <header className={`${theme}-theme`}>
+                <h2>{theme === "light" ? "Light" : "Dark"} Theme</h2>
             </header>
         )    
     }
