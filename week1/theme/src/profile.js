@@ -1,13 +1,19 @@
 import React from 'react';
+import { View, StyleSheet, Text, Button } from 'react-native';
 import { useTheme } from '../contexts/ThemeProvider';
 
-const Create = () => {
+const Profile = ({ navigation }) => {
   const { theme } = useTheme();
   return (
     <View
       style={[styles.container, { backgroundColor: theme.backgroundColor }]}
     >
-      <Text style={[styles.text, { color: theme.textColor }]}>Create</Text>
+      <Text style={[styles.text, { color: theme.textColor }]}>Profile</Text>
+      <Button
+        onPress={() => navigation.navigate('Test')}
+        title='Move to another screen!'
+        color={theme.nav.backgroundColor}
+      />
     </View>
   );
 };
@@ -24,4 +30,5 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Create;
+export default Profile;
+
