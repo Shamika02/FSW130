@@ -1,27 +1,13 @@
-import React from 'react';
-import { useTheme } from '../contexts/ThemeProvider';
+import React from "react"
+import ReactDOM from "react-dom"
 
-const Create = () => {
-  const { theme } = useTheme();
-  return (
-    <View
-      style={[styles.container, { backgroundColor: theme.backgroundColor }]}
-    >
-      <Text style={[styles.text, { color: theme.textColor }]}>Create</Text>
-    </View>
-  );
-};
+import "./styles.css"
+import App from "./App"
+import ThemeContext from "./ThemeContext"
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  text: {
-    fontSize: 20,
-    fontWeight: 'bold',
-  },
-});
-
-export default Create;
+ReactDOM.render(
+    <ThemeContext.Provider value={"dark"}>
+        <App />
+    </ThemeContext.Provider>, 
+    document.getElementById("root")
+)

@@ -1,21 +1,21 @@
-import React from 'react';
-import { StatusBar } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
-import TabNavigator from './app/navigation/TabNavigator';
-import ThemeProvider from './app/contexts/ThemeProvider';
-import Home from './app/components/Home';
-import ThemeWrapper from './app/components/ThemeWrapper';
-import CustomStatusBar from './app/components/CustomStatusBar';
+import React from "react"
+import "./styles.css"
+import Header from "./Header"
+import Button from "./Button"
 
-export default function App() {
-  return (
-    <ThemeProvider>
-      <ThemeWrapper>
-        <CustomStatusBar />
-        <NavigationContainer>
-          <TabNavigator />
-        </NavigationContainer>
-      </ThemeWrapper>
-    </ThemeProvider>
-  );
+function App() {
+    return (
+      
+       <div>
+            <Header />
+            <h2>This is a great exercise to learn!!</h2>
+            <br>
+            </br>
+            <Button />
+            </div>
+          
+       
+    )
 }
+
+export default App
