@@ -1,17 +1,54 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+const redux = require("redux")
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
-);
+function addContact(contact) {
+    return {
+        type: "Add_CONTACT",
+        payload: contact
+    }
+}
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+function deleteContact(contact) {
+    return {
+        type: "DELETE_CONTACT",
+        payload: contact
+    }
+}
+
+const initialState = {
+    myContact:[],
+    contacts: {
+
+       Name1:"Shamika Sims",
+       NumberA:"477-898-2222", 
+
+       Name2:"Honey Love",
+       NumberB:"323-125-9898",
+    
+    }
+}
+
+
+function reducer(state = initialState, action) {
+    switch(action.type) {
+        case "ADD_CONTACT":
+            return {
+                ...state,
+                contacts: action.payload,
+                myContact: [...state.myContact, action.payload]
+            }
+        case "DELETE_CONTACT":{
+            const updatedArr = state.addContact.filter(contact => contact.name !== action.payload.name)
+            return {
+                ...state,
+                myContact: updatedArr
+            }
+        }
+        default:
+            return state
+    }
+}
+
+const store = redux.createStore(reducer)
+store.subscribe(() => {
+    console.log(store.getState())
+})
